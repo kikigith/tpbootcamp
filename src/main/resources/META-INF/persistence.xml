@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0" >
+	<persistence-unit name="tpmsqlPU" transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>com.bootcamp.tp.models.entities.Beneficiaire</class>
+		<class>com.bootcamp.tp.models.entities.Bailleur</class>
+		<class>com.bootcamp.tp.models.entities.Fournisseur</class>
+		<class>com.bootcamp.tp.models.entities.Programme</class>
+		<class>com.bootcamp.tp.models.entities.Projet</class>
+		<class>com.bootcamp.tp.models.entities.Personne</class>
+		<class>com.bootcamp.tp.models.entities.Livrable</class>
+		<class>com.bootcamp.tp.models.entities.IndicateurPerformance</class>
+		<class>com.bootcamp.tp.models.entities.IndicateurQualitatif</class>
+		<class>com.bootcamp.tp.models.entities.IndicateurQuantitatif</class>
+		<class>com.bootcamp.tp.models.entities.BailleurProgramme</class>
+		<class>com.bootcamp.tp.models.entities.BailleurProjet</class>
+		<class>com.bootcamp.tp.models.entities.BeneficiaireProjet</class>
+		<class>com.bootcamp.tp.models.entities.ProgrammeBeneficiaire</class>
+		<class>com.bootcamp.tp.models.entities.ProgrammeFournisseur</class>
+		<class>com.bootcamp.tp.models.entities.ProjetFournisseur</class>
+		
+		
+		BailleurProgramme
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dbtpjpa" />
+			<property name="javax.persistence.jdbc.user" value="tpuser" />
+			<property name="javax.persistence.jdbc.password" value="tpuser" />
+			<!-- EclipseLink should create the database schema automatically -->
+			<property name="javax.persistence.schema-generation.database.action"
+				value="drop-and-create" />
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.logging.level" value="ALL" />
+		</properties>
+	</persistence-unit>
+	<persistence-unit name="tppgsqlPU" transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>com.bootcamp.tp.models.entities.Beneficiaire</class>
+		<class>com.bootcamp.tp.models.entities.Bailleur</class>
+		<class>com.bootcamp.tp.models.entities.Fournisseur</class>
+		<class>com.bootcamp.tp.models.entities.Programme</class>
+		<class>com.bootcamp.tp.models.entities.Projet</class>
+		<class>com.bootcamp.tp.models.entities.Personne</class>
+		<class>com.bootcamp.tp.models.entities.Livrable</class>
+		<class>com.bootcamp.tp.models.entities.IndicateurPerformance</class>
+		<class>com.bootcamp.tp.models.entities.IndicateurQualitatif</class>
+		<class>com.bootcamp.tp.models.entities.IndicateurQuantitatif</class>
+		<class>com.bootcamp.tp.models.entities.BailleurProgramme</class>
+		<class>com.bootcamp.tp.models.entities.BailleurProjet</class>
+		<class>com.bootcamp.tp.models.entities.BeneficiaireProjet</class>
+		<class>com.bootcamp.tp.models.entities.ProgrammeBeneficiaire</class>
+		<class>com.bootcamp.tp.models.entities.ProgrammeFournisseur</class>
+		<class>com.bootcamp.tp.models.entities.ProjetFournisseur</class>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.pgsql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:pgsql://localhost:5432/tpjpa" />
+			<property name="javax.persistence.jdbc.user" value="tpuser" />
+			<property name="javax.persistence.jdbc.password" value="tpuser" />
+			<!-- EclipseLink should create the database schema automatically -->
+			<property name="javax.persistence.schema-generation.database.action"
+				value="drop-and-create" />
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.logging.level" value="ALL" />
+		</properties>
+		
+	</persistence-unit>
+</persistence>
