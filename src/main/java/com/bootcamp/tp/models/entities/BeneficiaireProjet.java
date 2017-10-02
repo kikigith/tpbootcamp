@@ -10,29 +10,30 @@ import javax.persistence.Table;
 import com.bootcamp.tp.models.dependencies.BaseEntite;
 
 @Entity
-@Table(name = "tp_beneficiaire_projet")
+@Table(name="tp_beneficiaire_projet")
 public class BeneficiaireProjet extends BaseEntite implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "BENEFICIAIRE_ID", referencedColumnName = "id")
-	private Beneficiaire beneficiaire;
+	private Beneficiaire beneficiaireprojet;
+	
 	@ManyToOne
 	@JoinColumn(name = "PROJET_ID", referencedColumnName = "id")
-	private Projet projet;
+	private Projet projetbeneficiaire;
 
-	public Beneficiaire getBeneficiaire() {
-		return beneficiaire;
+	public Beneficiaire getBeneficiaireprojet() {
+		return beneficiaireprojet;
 	}
 
-	public void setBeneficiaire(Beneficiaire beneficiaire) {
-		this.beneficiaire = beneficiaire;
+	public void setBeneficiaireprojet(Beneficiaire beneficiaire) {
+		this.beneficiaireprojet = beneficiaire;
 	}
 
-	public Projet getProjet() {
-		return projet;
+	public Projet getProjetbeneficiaire() {
+		return projetbeneficiaire;
 	}
 
-	public void setProjet(Projet projet) {
-		this.projet = projet;
+	public void setProjetbeneficiaire(Projet projet) {
+		this.projetbeneficiaire = projet;
 	}
 
 }

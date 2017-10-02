@@ -1,5 +1,11 @@
 package com.bootcamp.tp;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import com.bootcamp.tp.controleurs.BailleurControllerOLDTest;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -17,7 +23,11 @@ public class AppTest
      */
     public AppTest( String testName )
     {
+    	
         super( testName );
+        EntityManagerFactory emf=Persistence.createEntityManagerFactory("tpmsqlPU");
+//        BailleurControllerOLDTest bct=new BailleurControllerOLDTest(emf);
+//        bct.testFindBailleur();
     }
 
     /**
@@ -33,6 +43,6 @@ public class AppTest
      */
     public void testApp()
     {
-        assertTrue( true );
+//        assertTrue( true );
     }
 }

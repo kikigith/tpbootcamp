@@ -49,7 +49,7 @@ public class Beneficiaire extends Personne implements Serializable {
 //            inverseJoinColumns = @JoinColumn(name = "projet_id", referencedColumnName = "id"),
 //            uniqueConstraints = @UniqueConstraint(columnNames = {"beneficiaire_id","projet_id"})
 //    )
-    @OneToMany(mappedBy="beneficiaire",
+    @OneToMany(mappedBy="beneficiaireprojet",
     		fetch=FetchType.LAZY,
 			cascade = CascadeType.ALL
     		)
