@@ -1,15 +1,22 @@
 package com.bootcamp.tp.controleurs;
 
 import java.io.Serializable;
-import java.sql.SQLException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
+import org.json.JSONObject;
 
 import com.bootcamp.tp.models.dependencies.BaseEntite;
 
@@ -143,13 +150,13 @@ public  abstract class ParentController<T extends BaseEntite> implements Seriali
 		String query = "SELECT i FROM "+
 				className + " i WHERE i."+propertyName+"= :param";
 		Query q=getEm().createQuery(query);
-//		if(propertyName == "id"){
-//
-//			q.setParameter("param", Integer.parseInt(propertyValue.toString()));
-//		}else{
-			q.setParameter("param", propertyValue.toString());
+		//		if(propertyName == "id"){
+		//
+		//			q.setParameter("param", Integer.parseInt(propertyValue.toString()));
+		//		}else{
+		q.setParameter("param", propertyValue.toString());
 
-//		}
+		//		}
 
 
 		return (T)q.getSingleResult();
@@ -169,6 +176,17 @@ public  abstract class ParentController<T extends BaseEntite> implements Seriali
 		return result;
 	}
 
+	/**
+	 * printAllAsJson: displays all instances of a given 
+	 *    entity in Json format:
+	 */
+	public void printAllAsJson(){
+		List<T> allInstances=findAll();
+		for(T i:allInstances){
+			JsonObject jo=getAsJSON(i);
+			System.out.println("Objet "+i.getClass().getSimpleName()+" "+ i.getId()+" converti en JSON \n"+jo);
+		}
+	}
 	/**
 	 * getCount : count rows number of a given entity class
 	 * @return rows number
@@ -211,6 +229,41 @@ public  abstract class ParentController<T extends BaseEntite> implements Seriali
 		} finally {
 			em.close();
 		}
+	}
+
+	/**
+	 * getAsJSON: convert an entity into Json object
+	 * @param obj
+	 * @return
+	 */
+	private JsonObject getAsJSON(final T obj){
+		JsonObjectBuilder entityBuilder=Json.createObjectBuilder();
+		JsonObject entityJson;
+
+
+		Field[] valueObjFields =obj.getClass().getDeclaredFields();
+		for(int i=0; i<valueObjFields.length; i++){
+
+			String fieldName=valueObjFields[i].getName();
+			valueObjFields[i].setAccessible(true);
+			try {
+				Object newObj=valueObjFields[i].get(obj);
+//				System.out.println("valeur "+newObj);
+				if(newObj!=null){
+					entityBuilder.add(fieldName, newObj.toString());
+					}
+
+				//				return entityJson;
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		entityJson=entityBuilder.build();
+		return entityJson;
 	}
 
 

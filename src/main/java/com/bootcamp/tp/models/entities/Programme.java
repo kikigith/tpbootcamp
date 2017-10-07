@@ -66,7 +66,7 @@ public class Programme extends BaseEntite implements Serializable {
 //            uniqueConstraints = @UniqueConstraint(columnNames = {"beneficiaire_id","programme_id"})
 //    )
 //    private List<Beneficiaire> beneficiaires;
-    @OneToMany(mappedBy = "programme",
+    @OneToMany(mappedBy = "programmedubailleur",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
       private List<BailleurProgramme> bailleursProgramme=new ArrayList<BailleurProgramme>();

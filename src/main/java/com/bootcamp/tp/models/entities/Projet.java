@@ -78,7 +78,7 @@ public class Projet extends BaseEntite implements Serializable {
             cascade = CascadeType.ALL)
     private List<ProjetFournisseur> fournisseursProjet=new ArrayList<ProjetFournisseur>();
     
-    @OneToMany(mappedBy = "projet",
+    @OneToMany(mappedBy = "projetdubeneficiaire",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private List<BeneficiaireProjet> beneficiairesProjet=new ArrayList<BeneficiaireProjet>();

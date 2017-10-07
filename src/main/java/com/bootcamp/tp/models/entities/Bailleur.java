@@ -50,7 +50,7 @@ public class Bailleur extends Personne implements Serializable {
 //            uniqueConstraints = @UniqueConstraint(columnNames = {"bailleur_id","programme_id"})
 //    )
 //    private List<Programme> programmes=new ArrayList<Programme>();
-    @OneToMany(mappedBy="bailleur",
+    @OneToMany(mappedBy="bailleurduprogramme",
     		fetch=FetchType.LAZY,
     		cascade=CascadeType.ALL
     		)
@@ -64,7 +64,7 @@ public class Bailleur extends Personne implements Serializable {
 //    )
 //    private List<Projet> projets=new ArrayList<Projet>();
     
-    @OneToMany(mappedBy="bailleur",
+    @OneToMany(mappedBy="bailleurduprojet",
     		fetch=FetchType.LAZY,
     		cascade=CascadeType.ALL
     		)

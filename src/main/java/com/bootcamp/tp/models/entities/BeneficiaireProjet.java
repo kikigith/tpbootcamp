@@ -18,7 +18,7 @@ public class BeneficiaireProjet extends BaseEntite implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "PROJET_ID", referencedColumnName = "id")
-	private Projet projetbeneficiaire;
+	private Projet projetdubeneficiaire;
 
 	public Beneficiaire getBeneficiaireprojet() {
 		return beneficiaireprojet;
@@ -28,12 +28,12 @@ public class BeneficiaireProjet extends BaseEntite implements Serializable{
 		this.beneficiaireprojet = beneficiaire;
 	}
 
-	public Projet getProjetbeneficiaire() {
-		return projetbeneficiaire;
+	public Projet getProjetdubeneficiaire() {
+		return projetdubeneficiaire;
 	}
 
-	public void setProjetbeneficiaire(Projet projet) {
-		this.projetbeneficiaire = projet;
+	public void setProjetdubeneficiaire(Projet projet) {
+		this.projetdubeneficiaire = projet;
 	}
 
 }

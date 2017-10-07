@@ -15,15 +15,15 @@ public class BailleurProjet extends BaseEntite implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="BAILLEUR_ID", referencedColumnName="id")
-	private Bailleur bailleur;
+	private Bailleur bailleurduprojet;
 	@ManyToOne
 	@JoinColumn(name="PROJET_ID", referencedColumnName="id")
 	private Projet projet;
-	public Bailleur getBailleur() {
-		return bailleur;
+	public Bailleur getBailleurduprojet() {
+		return bailleurduprojet;
 	}
-	public void setBailleur(Bailleur bailleur) {
-		this.bailleur = bailleur;
+	public void setBailleurduprojet(Bailleur bailleur) {
+		this.bailleurduprojet = bailleur;
 	}
 	public Projet getProjet() {
 		return projet;

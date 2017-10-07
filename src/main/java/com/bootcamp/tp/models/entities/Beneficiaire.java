@@ -71,6 +71,8 @@ public class Beneficiaire extends Personne implements Serializable {
 //        this.nom = nom;
 //    }
     
+    
+    
     @PrePersist
     @PreUpdate
     private  void validate(){
@@ -78,7 +80,15 @@ public class Beneficiaire extends Personne implements Serializable {
     		throw new IllegalArgumentException("Le nom est obligatoire");
     }
 
-    @Override
+    public List<BeneficiaireProjet> getProjetsBeneficiaire() {
+		return projetsBeneficiaire;
+	}
+
+	public void setProjetsBeneficiaire(List<BeneficiaireProjet> projetsBeneficiaire) {
+		this.projetsBeneficiaire = projetsBeneficiaire;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (getId() != null ? getId().hashCode() : 0);

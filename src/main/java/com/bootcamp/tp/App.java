@@ -5,13 +5,6 @@
  */
 package com.bootcamp.tp;
 
-import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,21 +13,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+
 import com.bootcamp.tp.controleurs.BailleurController;
 import com.bootcamp.tp.controleurs.BeneficiaireController;
 import com.bootcamp.tp.controleurs.FournisseurController;
-import com.bootcamp.tp.controleurs.IndicateurPerformanceController;
-import com.bootcamp.tp.controleurs.LivrableController;
-import com.bootcamp.tp.controleurs.ProgrammeController;
-import com.bootcamp.tp.controleurs.ProjetController;
-import com.bootcamp.tp.controleurs.exceptions.NonexistentEntityException;
 import com.bootcamp.tp.models.entities.Bailleur;
 import com.bootcamp.tp.models.entities.Beneficiaire;
 import com.bootcamp.tp.models.entities.Fournisseur;
-import com.bootcamp.tp.models.entities.IndicateurPerformance;
-import com.bootcamp.tp.models.entities.Livrable;
-import com.bootcamp.tp.models.entities.Programme;
-import com.bootcamp.tp.models.entities.Projet;
 
 /**
  *
@@ -56,6 +41,7 @@ public class App {
 		m.displayMenu();
 		//    	MenuGestionProjet mgp=new MenuGestionProjet();
 		//    	mgp.setVisible(true);
+		
 	}
 
 	public int displayMenu() {
@@ -110,7 +96,8 @@ public class App {
 			System.out.println("2- Rechercher");
 			System.out.println("3- Modifier");
 			System.out.println("4- Supprimer");
-			System.out.println("5- Menu principal");
+			System.out.println("5- JSON");
+			System.out.println("6- Menu principal");
 			System.out.print("Votre choix:");
 			Scanner in = new Scanner(System.in);
 			choix = in.nextInt();
@@ -129,7 +116,8 @@ public class App {
 		System.out.println("2- Rechercher");
 		System.out.println("3- Modifier");
 		System.out.println("4- Supprimer");
-		System.out.println("5- Menu principal");
+		System.out.println("5- JSON");
+		System.out.println("6- Menu principal");
 		System.out.print("Votre choix:");
 		Scanner in = new Scanner(System.in);
 		choix = in.nextInt();
@@ -189,6 +177,12 @@ public class App {
 			//			}
 			break;
 		case 5:
+			
+			Bailleur b4 = new Bailleur();
+			BailleurController bc4 = new BailleurController(em,b4);
+			bc4.printAllAsJson();
+			break;
+		case 6:
 			displayMenu();
 			break;
 		default:
@@ -207,7 +201,8 @@ public class App {
 		System.out.println("2- Rechercher");
 		System.out.println("3- Modifier");
 		System.out.println("4- Supprimer");
-		System.out.println("5- Menu principal");
+		System.out.println("5- JSON");
+		System.out.println("6- Menu principal");
 		System.out.print("Votre choix:");
 		Scanner in = new Scanner(System.in);
 		choix = in.nextInt();
@@ -264,6 +259,11 @@ public class App {
 			}
 
 			break;
+		case 5:
+			Beneficiaire b5 = new Beneficiaire();
+			BeneficiaireController bc5 = new BeneficiaireController(em,b5);
+			bc5.printAllAsJson();
+			break;
 		default:
 			break;
 		}
@@ -280,7 +280,9 @@ public class App {
 		System.out.println("2- Rechercher");
 		System.out.println("3- Modifier");
 		System.out.println("4- Supprimer");
-		System.out.println("5- Menu principal");
+		System.out.println("5- JSON");
+		System.out.println("6- Menu principal");
+		
 		System.out.print("Votre choix:");
 		Scanner in = new Scanner(System.in);
 		choix = in.nextInt();
@@ -338,6 +340,11 @@ public class App {
 					Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
 				}
 			}
+			break;
+		case 5:
+			Fournisseur f1 = new Fournisseur();
+			FournisseurController frs = new FournisseurController(em,f1);
+			frs.printAllAsJson();
 			break;
 		default:
 			break;
